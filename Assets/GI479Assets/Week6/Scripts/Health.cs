@@ -8,13 +8,13 @@ public class Health : MonoBehaviour
     public UnityEvent OnTakeDamage;
     public UnityEvent OnDead;
 
-    private float currentEnemyHP;
+    public float currentHealth;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentEnemyHP = maxEnemyHP;
+        currentHealth = maxEnemyHP;
     }
 
     public void takeDamage(float damageAmount)
@@ -22,7 +22,7 @@ public class Health : MonoBehaviour
         if (!IsDead())
         {
             OnTakeDamage.Invoke();
-            currentEnemyHP -= damageAmount;
+            currentHealth -= damageAmount;
 
             if (IsDead())
             {
@@ -33,7 +33,7 @@ public class Health : MonoBehaviour
 
     public bool IsDead()
     {
-        return currentEnemyHP <= 0;
+        return currentHealth <= 0;
     }
     
 }
